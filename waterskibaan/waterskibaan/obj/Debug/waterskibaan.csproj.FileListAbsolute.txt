@@ -1,0 +1,7 @@
+C:\Users\Steven\Desktop\WaterSkiBaan_project\waterskibaan\waterskibaan\obj\Debug\waterskibaan.csprojAssemblyReference.cache
+C:\Users\Steven\Desktop\WaterSkiBaan_project\waterskibaan\waterskibaan\obj\Debug\waterskibaan.csproj.CoreCompileInputs.cache
+C:\Users\Steven\Desktop\WaterSkiBaan_project\waterskibaan\waterskibaan\bin\Debug\waterskibaan.exe.config
+C:\Users\Steven\Desktop\WaterSkiBaan_project\waterskibaan\waterskibaan\bin\Debug\waterskibaan.exe
+C:\Users\Steven\Desktop\WaterSkiBaan_project\waterskibaan\waterskibaan\bin\Debug\waterskibaan.pdb
+C:\Users\Steven\Desktop\WaterSkiBaan_project\waterskibaan\waterskibaan\obj\Debug\waterskibaan.exe
+C:\Users\Steven\Desktop\WaterSkiBaan_project\waterskibaan\waterskibaan\obj\Debug\waterskibaan.pdb

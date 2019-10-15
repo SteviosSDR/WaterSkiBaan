@@ -1,0 +1,17 @@
+C:\Users\Steven\Desktop\WaterSkiBaan_project\waterskibaan\WaterskibaanTest\obj\Debug\WaterskibaanTest.csprojAssemblyReference.cache
+C:\Users\Steven\Desktop\WaterSkiBaan_project\waterskibaan\WaterskibaanTest\obj\Debug\WaterskibaanTest.csproj.CoreCompileInputs.cache
+C:\Users\Steven\Desktop\WaterSkiBaan_project\waterskibaan\WaterskibaanTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\Steven\Desktop\WaterSkiBaan_project\waterskibaan\WaterskibaanTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\Steven\Desktop\WaterSkiBaan_project\waterskibaan\WaterskibaanTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\Steven\Desktop\WaterSkiBaan_project\waterskibaan\WaterskibaanTest\bin\Debug\WaterskibaanTest.dll
+C:\Users\Steven\Desktop\WaterSkiBaan_project\waterskibaan\WaterskibaanTest\bin\Debug\WaterskibaanTest.pdb
+C:\Users\Steven\Desktop\WaterSkiBaan_project\waterskibaan\WaterskibaanTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+C:\Users\Steven\Desktop\WaterSkiBaan_project\waterskibaan\WaterskibaanTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\Users\Steven\Desktop\WaterSkiBaan_project\waterskibaan\WaterskibaanTest\bin\Debug\waterskibaan.exe
+C:\Users\Steven\Desktop\WaterSkiBaan_project\waterskibaan\WaterskibaanTest\bin\Debug\waterskibaan.pdb
+C:\Users\Steven\Desktop\WaterSkiBaan_project\waterskibaan\WaterskibaanTest\bin\Debug\waterskibaan.exe.config
+C:\Users\Steven\Desktop\WaterSkiBaan_project\waterskibaan\WaterskibaanTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+C:\Users\Steven\Desktop\WaterSkiBaan_project\waterskibaan\WaterskibaanTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+C:\Users\Steven\Desktop\WaterSkiBaan_project\waterskibaan\WaterskibaanTest\obj\Debug\WaterskibaanTest.csproj.CopyComplete
+C:\Users\Steven\Desktop\WaterSkiBaan_project\waterskibaan\WaterskibaanTest\obj\Debug\WaterskibaanTest.dll
+C:\Users\Steven\Desktop\WaterSkiBaan_project\waterskibaan\WaterskibaanTest\obj\Debug\WaterskibaanTest.pdb
