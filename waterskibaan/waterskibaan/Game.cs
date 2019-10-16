@@ -9,33 +9,35 @@ namespace waterskibaan
 {
     public class Game
     {
+        //properties
         public Waterskibaan Waterskibaan { get; set; }
         public WachtrijInstructie WachtrijInstructie { get; set; }
         public InstructieGroep InstructieGroep { get; set; }
         public WachtrijStarten WachtrijStarten { get; set; }
 
+        //timers
+        private Timer BezoekerTimer;
 
+        private Timer InstructionTimer;
+
+        private Timer MoveLinesTimer;
+
+        //delegates
         public delegate void NieuweBezoekerHandler(NieuweBezoekerArgs args);
         public delegate void InstructieAfgelopenHandler(InstructieAfgelopenArgs args);
 
+        //events
         public event InstructieAfgelopenHandler InstructieAfgelopen;
         public event NieuweBezoekerHandler NieuweBezoeker;
 
-        //timers
-        private static System.Timers.Timer gametimer;
-
-        private int sec;
 
         public void initialize()
         {
             Waterskibaan = new Waterskibaan();
             WachtrijInstructie = new WachtrijInstructie(this);
-            InstructieGroep = new InstructieGroep();
+            InstructieGroep = new InstructieGroep(this);
             WachtrijStarten = new WachtrijStarten(this, Waterskibaan);
 
-            //NieuweBezoeker += NewBezoeker;
-            InstructieAfgelopen += VInstructieAfgelopen;
-            InstructieAfgelopen += InstructieNaarWachtrij;
             Waterskibaan.waterskibaan();
 
             GameLoop();
@@ -43,38 +45,42 @@ namespace waterskibaan
 
         public void GameLoop()
         {
-            gametimer = new Timer(1000);
-            gametimer.Elapsed += TimerModulo;
-            if (sec % 2 == 0)
-            {
-                Console.WriteLine("nieuwe bezoeker gevonden");
-                gametimer.Elapsed += NewSporter;
-            }
-
-            else if (sec % 20 == 0)
-            {
-                Console.WriteLine("instructie afgelopen");
-                gametimer.Elapsed += NewInstructieAfgelopen;
-            }
-
-            else if(sec % 4 == 0)
-            {
-                Console.WriteLine("Lijnen verplaatst");
-                gametimer.Elapsed += LijnenVerplaatstPV;
-            }
-            gametimer.AutoReset = true;
-            gametimer.Enabled = true;
+            NewVisitor();
+            NewInstruction();
+            MoveLines();
 
             Console.ReadLine();
-            gametimer.Stop();
-            gametimer.Dispose();
+            BezoekerTimer.Stop();
+            BezoekerTimer.Dispose();
+            InstructionTimer.Stop();
+            InstructionTimer.Dispose();
+            MoveLinesTimer.Stop();
+            MoveLinesTimer.Dispose();
         }
 
-        private void TimerModulo(object source, ElapsedEventArgs e)
+        private void NewVisitor()
         {
-            sec++;
+            BezoekerTimer = new Timer(3000);
+            BezoekerTimer.Elapsed += NewSporter;
+            BezoekerTimer.AutoReset = true;
+            BezoekerTimer.Enabled = true;
         }
 
+        private void NewInstruction()
+        {
+            InstructionTimer = new Timer(20000); //20000
+            InstructionTimer.Elapsed += NewInstructieAfgelopen;
+            InstructionTimer.AutoReset = true;
+            InstructionTimer.Enabled = true;
+        }
+
+        private void MoveLines()
+        {
+            MoveLinesTimer = new Timer(4000);
+            MoveLinesTimer.Elapsed += LijnenVerplaatstPV;
+            MoveLinesTimer.AutoReset = true;
+            MoveLinesTimer.Enabled = true;
+        }
         private void LijnenVerplaatstPV(object source, ElapsedEventArgs e)
         {
             Waterskibaan.VerplaatsKabel();
@@ -87,7 +93,7 @@ namespace waterskibaan
 
         private void NewInstructieAfgelopen(Object source, ElapsedEventArgs e)
         {
-            InstructieAfgelopen?.Invoke(new InstructieAfgelopenArgs(InstructieGroep.SportersVerlatenRij(5)));
+            InstructieAfgelopen?.Invoke(new InstructieAfgelopenArgs(WachtrijInstructie.SportersVerlatenRij(5)));
         }
 
         private void NewSporter(Object source, ElapsedEventArgs e)
@@ -101,32 +107,6 @@ namespace waterskibaan
             */
 
             NieuweBezoeker?.Invoke(new NieuweBezoekerArgs(new Sporter(MoveCollection.GetWillekeurigeMoves(5))));
-        }
-
-        /*
-        private void NewBezoeker(NieuweBezoekerArgs args)
-        {
-            Console.WriteLine("Bezoeker toegevoegd aan wachtrij");
-            instructierij.SporterneemPlaatsInRij(args.Sporter);
-        }
-        */
-
-        private void VInstructieAfgelopen(InstructieAfgelopenArgs args)
-        {
-            foreach(Sporter sporter in args.sporterLijst)
-            {
-                Console.WriteLine("Sporter toegevoegd aan Instructiegroep");
-                InstructieGroep.SporterneemPlaatsInRij(sporter);
-            }
-        }
-
-        private void InstructieNaarWachtrij(InstructieAfgelopenArgs args)
-        {
-            foreach (Sporter sporter in args.sporterLijst)
-            {
-                Console.WriteLine("Sporter toegevoegd aan startrij");
-                WachtrijStarten.SporterneemPlaatsInRij(sporter);
-            }
         }
 
         public class NieuweBezoekerArgs : EventArgs

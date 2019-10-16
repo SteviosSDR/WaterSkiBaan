@@ -64,6 +64,21 @@ namespace waterskibaan
     {
         public InstructieGroep() : base(5) { }
 
+        public InstructieGroep(Game game) : base(100)
+        {
+            game.InstructieAfgelopen += InstructieAfgelopen;
+        }
+
+        public void InstructieAfgelopen(InstructieAfgelopenArgs args)
+        {
+            Console.WriteLine("Instructie afgelopen");
+            Console.WriteLine($"{args.sporterLijst.Count} sporters toegevoegd aan de rij");
+            foreach (Sporter sporter in args.sporterLijst)
+            {
+                SporterneemPlaatsInRij(sporter);
+            }
+        }
+
         public override string ToString() => $"InstructieGroep lengte: { queue.Count},max: {MAX_LENGTE_RIJ}";
     }
 
