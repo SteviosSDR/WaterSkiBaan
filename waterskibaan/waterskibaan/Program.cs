@@ -15,6 +15,7 @@ namespace waterskibaan
             TestOpdracht8();
             TestOpdracht10();
             TestOpdracht11();
+            TestOpdracht12();
         }
 
         private static void TestOpdracht2()
@@ -74,6 +75,14 @@ namespace waterskibaan
         private static void TestOpdracht11()
         {
             Console.WriteLine("\nOpdracht 11:");
+            //Game game = new Game();
+
+            //game.initialize();
+        }
+
+        private static void TestOpdracht12()
+        {
+            Console.WriteLine("\nOpdracht 12:");
             Game game = new Game();
 
             game.initialize();

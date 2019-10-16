@@ -34,12 +34,28 @@ namespace waterskibaan
             for (int i = 0; i < Math.Min(aantal, queue.Count); i++) sporters.Add(queue.Dequeue());
             return sporters;
         }
+
+        public Sporter SporterVerlaatRij()
+        {
+            return queue.Dequeue();
+        }
     }
 
     public class WachtrijInstructie : Wachtrij
     {
-        public WachtrijInstructie() : base(100) { }
+        public WachtrijInstructie(Game game) : base(100)
+        {
+            game.NieuweBezoeker += PlaatsBezoekerInRij;
+        }
+        public void PlaatsBezoekerInRij(NieuweBezoekerArgs e)
+        {
+            SporterneemPlaatsInRij(e.Sporter);
+        }
 
+        public WachtrijInstructie() : base(100)
+        {
+
+        }
         public override string ToString() => $"WachtrijInstructie lengte: { queue.Count},max: {MAX_LENGTE_RIJ}]";
     }
 
