@@ -43,19 +43,8 @@ namespace waterskibaan
 
     public class WachtrijInstructie : Wachtrij
     {
-        public WachtrijInstructie(Game game) : base(100)
-        {
-            game.NieuweBezoeker += PlaatsBezoekerInRij;
-        }
-        public void PlaatsBezoekerInRij(NieuweBezoekerArgs e)
-        {
-            SporterneemPlaatsInRij(e.Sporter);
-        }
+        public WachtrijInstructie() : base(100) { }
 
-        public WachtrijInstructie() : base(100)
-        {
-
-        }
         public override string ToString() => $"WachtrijInstructie lengte: { queue.Count},max: {MAX_LENGTE_RIJ}]";
     }
 
