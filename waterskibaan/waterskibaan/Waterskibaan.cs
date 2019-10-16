@@ -14,20 +14,17 @@ namespace waterskibaan
         
         public void SporterStart(Sporter sp)
         {
-            if (kabel.isStartPosietieLeeg())
+            if (sp.Zwemvest == null | sp.Skies == null)
             {
-                if (sp.Zwemvest == null | sp.Skies == null)
-                {
-                    throw new NullReferenceException("Deze sporter heeft zijn skies en/of zijn zemvest vergeten.");
-                }
+                throw new NullReferenceException("Deze sporter heeft zijn skies en/of zijn zemvest vergeten.");
+            }
 
-                else
-                {
-                    Lijn lijn = lijnvoorraad.verwijderEersteLijn();
-                    lijn.huidigeSporter = sp;
-                    sp.AantalRondenNogTeGaan = aantalRondes.Next(1, 2);
-                    kabel.NeemLijnInGeruik(lijn);
-                }
+            else if(kabel.isStartPosietieLeeg())
+            {
+                Lijn lijn = lijnvoorraad.verwijderEersteLijn();
+                lijn.huidigeSporter = sp;
+                sp.AantalRondenNogTeGaan = aantalRondes.Next(1, 2);
+                kabel.NeemLijnInGeruik(lijn);
             }
         }
 
@@ -37,6 +34,7 @@ namespace waterskibaan
             {
                 Lijn lijn = new Lijn();
                 lijnvoorraad.LijnToevoegenAanRij(lijn);
+                //Console.WriteLine("Lijn toegevoegd");
             }
         }
 

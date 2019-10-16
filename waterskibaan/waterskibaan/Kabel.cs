@@ -8,16 +8,16 @@ namespace waterskibaan
 {
     public class Kabel
     {
-        private LinkedList<Lijn> _lijnen { get; set; } 
+        private LinkedList<Lijn> lijnen;
 
         public Kabel()
         {
-            this._lijnen = new LinkedList<Lijn>();
+            this.lijnen = new LinkedList<Lijn>();
         }
 
         public bool isStartPosietieLeeg()
         {
-            foreach(Lijn lijn in _lijnen)
+            foreach(Lijn lijn in lijnen)
             {
                 if(lijn.PositieOpDeKabel == 0)
                 {
@@ -31,14 +31,14 @@ namespace waterskibaan
         {
             if(isStartPosietieLeeg())
             {
-                _lijnen.AddFirst(lijn);
                 lijn.PositieOpDeKabel = 0;
+                lijnen.AddFirst(lijn);
             }
         }
 
         public void VerschuifLijnen()
         {
-            foreach(Lijn lijn in _lijnen)
+            foreach(Lijn lijn in lijnen)
             {
                 if(lijn.PositieOpDeKabel < 10)
                 {
@@ -55,11 +55,12 @@ namespace waterskibaan
 
         public Lijn VerwijderLijnVanKabel()
         {
-            foreach(Lijn lijn in _lijnen)
+            foreach(Lijn lijn in lijnen)
             {
                 if (lijn.PositieOpDeKabel == 10 && lijn.huidigeSporter.AantalRondenNogTeGaan == 1)
                 {
-                    _lijnen.Remove(lijn);
+                    //Console.WriteLine("sporter is klaar");
+                    lijnen.Remove(lijn);
                     return lijn;
                 }
             }
@@ -71,7 +72,7 @@ namespace waterskibaan
         {
             StringBuilder sb = new StringBuilder();
 
-            foreach(Lijn lijn in _lijnen)
+            foreach(Lijn lijn in lijnen)
             {
                 sb.Append($"{lijn.PositieOpDeKabel}|");
             }

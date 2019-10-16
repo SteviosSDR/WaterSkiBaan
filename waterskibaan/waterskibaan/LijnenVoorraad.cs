@@ -8,24 +8,21 @@ namespace waterskibaan
 {
     public class LijnenVoorraad
     {
-        private  Queue<Lijn> _lijnen = new Queue<Lijn>();
+        private Queue<Lijn> _lijnen { get; set; } = new Queue<Lijn>();
 
         public void LijnToevoegenAanRij(Lijn lijn)
         {
-            _lijnen.Enqueue(lijn);
+            if(lijn != null)
+            {
+                //Console.WriteLine("lijn toegevoegd aan rij");
+                _lijnen.Enqueue(lijn);
+            }
         }
 
         public Lijn verwijderEersteLijn()
         {
-            if (_lijnen.Count > 0)
-            {
-                return _lijnen.Dequeue();
-            }
-
-            else
-            {
-                return null;
-            }
+            //Console.WriteLine("Lijn verwijderd");
+            return _lijnen.Dequeue();
         }
 
         public int GetAantalLijnen()

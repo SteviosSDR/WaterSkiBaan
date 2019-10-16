@@ -10,6 +10,10 @@ namespace waterskibaan
     public class Game
     {
         Waterskibaan waterskibaan = new Waterskibaan();
+
+        public delegate void NieuweBezoekerHandler(NieuweBezoekerHandler args);
+
+        public event NieuweBezoekerHandler NieuweBezoeker;
         public void initialize()
         {
             WachtrijInstructie instructierij = new WachtrijInstructie();
@@ -17,6 +21,11 @@ namespace waterskibaan
             WachtrijStarten startRij = new WachtrijStarten();
             waterskibaan.waterskibaan();
 
+            GameLoop();
+        }
+
+        public void GameLoop()
+        {
             Timer gametimer = new Timer();
             gametimer.Elapsed += new ElapsedEventHandler(OnTimedEvent);
             gametimer.Interval = 1000;
@@ -33,6 +42,11 @@ namespace waterskibaan
             waterskibaan.VerplaatsKabel();
             waterskibaan.SporterStart(henk);
             Console.WriteLine(waterskibaan.ToString());
+        }
+
+        public class NieuweBezoekerArgs
+        {
+
         }
     }
 }
