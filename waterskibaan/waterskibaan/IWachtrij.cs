@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
+using static waterskibaan.Game;
 
 namespace waterskibaan
 {
@@ -45,6 +46,17 @@ namespace waterskibaan
     {
         public WachtrijInstructie() : base(100) { }
 
+        public WachtrijInstructie(Game game) : base(100)
+        {
+            game.NieuweBezoeker += PlaatsBezoekerInRij;
+        }
+
+        public void PlaatsBezoekerInRij(NieuweBezoekerArgs args)
+        {
+            Console.WriteLine("bezoeker geplaatst in wachtrij");
+            SporterneemPlaatsInRij(args.Sporter);
+        }
+
         public override string ToString() => $"WachtrijInstructie lengte: { queue.Count},max: {MAX_LENGTE_RIJ}]";
     }
 
@@ -59,6 +71,10 @@ namespace waterskibaan
     {
         public WachtrijStarten() : base(20) { }
 
+        public WachtrijStarten(Game game, Waterskibaan waterskibaan) : base(20)
+        {
+
+        }
         public override string ToString() => $"WachtrijStarten lengte: {queue.Count},max: {MAX_LENGTE_RIJ}";
     }
 }
