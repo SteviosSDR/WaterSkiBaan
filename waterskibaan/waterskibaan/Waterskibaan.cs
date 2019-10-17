@@ -23,7 +23,7 @@ namespace waterskibaan
             {
                 Lijn lijn = lijnvoorraad.verwijderEersteLijn();
                 lijn.huidigeSporter = sp;
-                lijn.huidigeSporter.AantalRondenNogTeGaan = aantalRondes.Next(2) + 1;
+                //lijn.huidigeSporter.AantalRondenNogTeGaan = aantalRondes.Next(2) + 1;
                 kabel.NeemLijnInGeruik(lijn);
             }
         }

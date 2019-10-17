@@ -29,6 +29,8 @@ namespace waterskibaan
                 aantalPunten = aantalPunten + (Moves[i].Move()); 
             }
             KledingKleur = GetRandomKleur();
+
+            AantalRondenNogTeGaan = aantalRondes();
         }
 
         public IMoves HuidigeMove
@@ -79,7 +81,10 @@ namespace waterskibaan
 
             set;
         }
-
+        private int aantalRondes()
+        {
+            return rnd.Next(2) + 1;
+        }
         private static Color GetRandomKleur()
         {
             return Color.FromArgb(rnd.Next(256), rnd.Next(256), rnd.Next(256));

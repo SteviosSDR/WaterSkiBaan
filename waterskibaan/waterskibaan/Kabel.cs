@@ -42,7 +42,7 @@ namespace waterskibaan
         {
             foreach(Lijn lijn in lijnen)
             {
-                if (lijn.PositieOpDeKabel < 10)
+                if (lijn.PositieOpDeKabel < 9)
                 {
                     lijn.PositieOpDeKabel++;
                 }
@@ -50,6 +50,7 @@ namespace waterskibaan
                 else
                 {
                     lijn.PositieOpDeKabel = 0;
+                    Console.WriteLine($"Sporter is van {lijn.huidigeSporter.AantalRondenNogTeGaan} naar {(lijn.huidigeSporter.AantalRondenNogTeGaan)-1} gegaan");
                     lijn.huidigeSporter.AantalRondenNogTeGaan--;
                 }
             }
@@ -59,9 +60,9 @@ namespace waterskibaan
         {
             foreach(Lijn lijn in lijnen)
             {
-                if (lijn.PositieOpDeKabel == 10 && lijn.huidigeSporter.AantalRondenNogTeGaan == 1)
+                if (lijn.PositieOpDeKabel == 9 && lijn.huidigeSporter.AantalRondenNogTeGaan == 1)
                 {
-                    //Console.WriteLine("sporter is klaar");
+                    Console.WriteLine("sporter is klaar");
                     lijnen.Remove(lijn);
                     return lijn;
                 }

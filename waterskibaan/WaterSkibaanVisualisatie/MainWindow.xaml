@@ -34,5 +34,11 @@
         <Label x:Name="lbl_rondesTotaal" Content="" HorizontalAlignment="Left" Margin="227,715,0,0" VerticalAlignment="Top" Grid.Column="1" Height="53" Width="95" FontSize="32"/>
         <Label x:Name="lbl_rood" Content="" HorizontalAlignment="Left" Margin="227,778,0,0" VerticalAlignment="Top" Grid.Column="1" Height="53" Width="95" FontSize="32"/>
         <Label x:Name="lbl_highScore" Content="" HorizontalAlignment="Left" Margin="227,836,0,0" VerticalAlignment="Top" Grid.Column="1" Height="53" Width="95" FontSize="32"/>
+        <Canvas x:Name="cnvs_lightToDark" HorizontalAlignment="Left" Height="100" Margin="454,13,0,0" VerticalAlignment="Top" Width="547" Grid.Column="1"/>
+        <Canvas x:Name="canvasMoves" Canvas.Left="-180" Width="180" Background="White" Canvas.Top="693" Grid.Column="1" Margin="449,579,1170,0">
+            <TextBlock Canvas.Left="10" TextWrapping="Wrap"><Run Text="unieke moves" FontSize="20"/><LineBreak/><Run/></TextBlock>
+            <ListBox x:Name="allMoves" Height="195" Canvas.Left="10" Canvas.Top="32" Width="141"/>
+        </Canvas>
+
     </Grid>
 </Window>

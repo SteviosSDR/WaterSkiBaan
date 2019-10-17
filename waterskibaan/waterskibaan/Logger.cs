@@ -26,9 +26,9 @@ namespace waterskibaan
                      orderby GetTotaleKleurWaarde(sporter.KledingKleur) descending
                      select sporter).Take(10);
 
-            List<Sporter> kleurties = new List<Sporter>();
-            kleurties = a.ToList();
-            return kleurties;
+            List<Sporter> kleuren = new List<Sporter>();
+            kleuren = a.ToList();
+            return kleuren;
         }
 
         public int GetHighScore()
@@ -61,7 +61,6 @@ namespace waterskibaan
                     }
                 }
             }
-
             return m;
         }
 

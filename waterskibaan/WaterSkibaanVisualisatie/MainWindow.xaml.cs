@@ -40,7 +40,7 @@ namespace WaterSkibaanVisualisatie
                 lbl_lijnenAantalInt.Content = game.Waterskibaan.lijnvoorraad.GetAantalLijnen();
 
                 //logger
-                lbl_bezoekersAantal.Content = $"{game.logger._bezoekers.Count}";
+                lbl_bezoekersAantal.Content = $"{game.logger.GetTotaleBezoekers()}";
                 lbl_rondesTotaal.Content = $"{game.logger.GetTotaleRondes()}";
                 lbl_rood.Content = $"{game.logger.BezoekersInRood}";
                 lbl_highScore.Content = $"{game.logger.GetHighScore()}";
@@ -52,9 +52,10 @@ namespace WaterSkibaanVisualisatie
                 cnvs_water.Children.Clear();
 
                 //cnvs_water.Children.Add(canvasMoves);
-                //TekenMoves();
+                TekenMoves();
 
                 TekenKabel();
+                vanLichtNaarDonker();
 
             });
         }
@@ -143,10 +144,31 @@ namespace WaterSkibaanVisualisatie
         public void PlaatsSporter(int x, int y, Lijn l)
         {
             Ellipse circle = new Ellipse();
+            Rectangle rec = new Rectangle();
+            Rectangle rec2 = new Rectangle();
+            Rectangle skie = new Rectangle();
+            Rectangle skie2 = new Rectangle();
+            rec.Fill = new SolidColorBrush(Colors.Black);
+            rec.Width = 3;
+            rec.Height = 10;
+            rec2.Fill = new SolidColorBrush(Colors.Black);
+            rec2.Width = 10;
+            rec2.Height = 3;
+
             System.Drawing.Color kleding = l.huidigeSporter.KledingKleur;
             Color convertedKleur = Color.FromArgb(kleding.A, kleding.R, kleding.G, kleding.B);
 
             {
+                skie.Fill = new SolidColorBrush(convertedKleur);
+                skie.Height = 5;
+                skie.Width = 30;
+                skie.Stroke = new SolidColorBrush(Colors.Black);
+
+                skie2.Fill = new SolidColorBrush(convertedKleur);
+                skie2.Height = 5;
+                skie2.Width = 30;
+                skie2.Stroke = new SolidColorBrush(Colors.Black);
+
                 circle.Fill = new SolidColorBrush(convertedKleur);
                 circle.Width = 20;
                 circle.Height = 20;
@@ -155,7 +177,67 @@ namespace WaterSkibaanVisualisatie
 
             Canvas.SetLeft(circle, x);
             Canvas.SetTop(circle, y);
+
+            Canvas.SetLeft(skie, x);
+            Canvas.SetTop(skie, y - 3);
+            cnvs_water.Children.Add(skie);
+            Canvas.SetLeft(skie2, x);
+            Canvas.SetTop(skie2, y + 17);
+            cnvs_water.Children.Add(skie2);
             cnvs_water.Children.Add(circle);
+
+
+            Canvas.SetTop(rec, y - 15);
+            Canvas.SetLeft(rec, x + 10);
+            Canvas.SetTop(rec2, y - 7);
+            Canvas.SetLeft(rec2, x + 7);
+
+
+            if (l.huidigeSporter.AantalRondenNogTeGaan == 1)
+            {
+                cnvs_water.Children.Add(rec);
+            }
+
+            else if(l.huidigeSporter.AantalRondenNogTeGaan > 1)
+            {
+                cnvs_water.Children.Add(rec);
+                cnvs_water.Children.Add(rec2);
+            }
+        }
+
+        public void TekenMoves()
+        {
+            allMoves.Items.Clear();
+            game.logger.UniekeMoves(game?.Waterskibaan?.kabel?.lijnen).ForEach(naam => allMoves.Items.Add(naam));
+        }
+
+
+        public void vanLichtNaarDonker()
+        {
+
+            cnvs_lightToDark.Children.Clear();
+            int x = 0, y = 5;
+
+            foreach (Sporter sp in game.logger.GetLichsteKleuren())
+            {
+
+                Ellipse circle = new Ellipse();
+                System.Drawing.Color kleding = sp.KledingKleur;
+                Color convertedKleur = Color.FromArgb(kleding.A, kleding.R, kleding.G, kleding.B);
+
+                {
+                    circle.Fill = new SolidColorBrush(convertedKleur);
+                    circle.Width = 20;
+                    circle.Height = 20;
+                    circle.Stroke = new SolidColorBrush(Colors.Black);
+                }
+
+                Canvas.SetLeft(circle, x);
+                Canvas.SetTop(circle, y);
+
+                cnvs_lightToDark.Children.Add(circle);
+                x += 30;
+            }
         }
 
 
