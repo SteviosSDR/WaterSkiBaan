@@ -27,7 +27,7 @@
         <Label x:Name="lbl_lijnenAantalLBL" Content="Lijnen op voorraad:" HorizontalAlignment="Left" Margin="10,609,0,0" VerticalAlignment="Top" Background="#FF79C55D" FontSize="32" Grid.ColumnSpan="2" Width="493"/>
         <Label x:Name="lbl_lijnenAantalInt" Content="" HorizontalAlignment="Left" Margin="227,609,0,0" VerticalAlignment="Top" Grid.Column="1" Height="53" Width="95" FontSize="32"/>
         <Label x:Name="lbl_lijnenAantalLBL_Copy" Content="bezoekers totaal:" HorizontalAlignment="Left" Margin="10,667,0,0" VerticalAlignment="Top" Background="#FF79C55D" FontSize="32" Grid.ColumnSpan="2" Width="493"/>
-        <Label x:Name="lbl_lijnenAantalLBL_Copy1" Content="aantal ronders totaal: " HorizontalAlignment="Left" Margin="10,725,0,0" VerticalAlignment="Top" Background="#FF79C55D" FontSize="32" Grid.ColumnSpan="2" Width="493"/>
+        <Label x:Name="lbl_lijnenAantalLBL_Copy1" Content="aantal rondes totaal: " HorizontalAlignment="Left" Margin="10,725,0,0" VerticalAlignment="Top" Background="#FF79C55D" FontSize="32" Grid.ColumnSpan="2" Width="493"/>
         <Label x:Name="lbl_lijnenAantalLBL_Copy2" Content="rood:" HorizontalAlignment="Left" Margin="10,783,0,0" VerticalAlignment="Top" Background="#FF79C55D" FontSize="32" Grid.ColumnSpan="2" Width="493"/>
         <Label Content="Hoogste score:" HorizontalAlignment="Left" Margin="10,841,0,0" VerticalAlignment="Top" Background="#FF79C55D" FontSize="32" Grid.ColumnSpan="2" Width="493"/>
         <Label x:Name="lbl_bezoekersAantal" Content="" HorizontalAlignment="Left" Margin="227,662,0,0" VerticalAlignment="Top" Grid.Column="1" Height="53" Width="95" FontSize="32"/>
