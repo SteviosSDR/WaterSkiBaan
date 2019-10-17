@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace waterskibaan
 {
@@ -16,13 +17,10 @@ namespace waterskibaan
 
     }
 
-    public class Color
+    public class Sporter
     {
+        private static readonly Random rnd = new Random();
 
-    }
-
-     public class Sporter
-    {
         public Sporter(List<IMoves> Moves)
         {
             this.Moves = Moves;
@@ -30,6 +28,7 @@ namespace waterskibaan
             {
                 aantalPunten = aantalPunten + (Moves[i].Move()); 
             }
+            KledingKleur = GetRandomKleur();
         }
 
         public IMoves HuidigeMove
@@ -79,6 +78,11 @@ namespace waterskibaan
             get;
 
             set;
+        }
+
+        private static Color GetRandomKleur()
+        {
+            return Color.FromArgb(rnd.Next(256), rnd.Next(256), rnd.Next(256));
         }
     }
 }

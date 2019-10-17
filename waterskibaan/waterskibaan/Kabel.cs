@@ -8,11 +8,10 @@ namespace waterskibaan
 {
     public class Kabel
     {
-        private LinkedList<Lijn> lijnen;
-
+        public LinkedList<Lijn> lijnen = new LinkedList<Lijn>();
         public Kabel()
         {
-            this.lijnen = new LinkedList<Lijn>();
+
         }
 
         public bool isStartPosietieLeeg()
@@ -31,8 +30,11 @@ namespace waterskibaan
         {
             if(isStartPosietieLeeg())
             {
-                lijn.PositieOpDeKabel = 0;
                 lijnen.AddFirst(lijn);
+            }
+            else
+            {
+                return;
             }
         }
 
@@ -40,7 +42,7 @@ namespace waterskibaan
         {
             foreach(Lijn lijn in lijnen)
             {
-                if(lijn.PositieOpDeKabel < 10)
+                if (lijn.PositieOpDeKabel < 10)
                 {
                     lijn.PositieOpDeKabel++;
                 }

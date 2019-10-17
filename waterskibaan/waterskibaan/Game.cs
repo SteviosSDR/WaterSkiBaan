@@ -15,12 +15,9 @@ namespace waterskibaan
         public InstructieGroep InstructieGroep { get; set; }
         public WachtrijStarten WachtrijStarten { get; set; }
 
-        //timers
-        private Timer BezoekerTimer;
+        public int _ticks;
 
-        private Timer InstructionTimer;
-
-        private Timer MoveLinesTimer;
+        public Logger logger;
 
         //delegates
         public delegate void NieuweBezoekerHandler(NieuweBezoekerArgs args);
@@ -37,56 +34,41 @@ namespace waterskibaan
             WachtrijInstructie = new WachtrijInstructie(this);
             InstructieGroep = new InstructieGroep(this);
             WachtrijStarten = new WachtrijStarten(this);
+            logger = new Logger(Waterskibaan.kabel);
+            NieuweBezoeker += logger.OnNieuweBezoeker;
 
             Waterskibaan.waterskibaan();
-
-            GameLoop();
         }
 
-        public void GameLoop()
+        public void secondPassed(object sender, ElapsedEventArgs args)
         {
-            NewVisitor();
-            NewInstruction();
-            MoveLines();
+            _ticks++;
+            if (_ticks % 2 == 0)
+            {
+                Console.WriteLine("Nieuwe bezoeker!");
+                NewSporter();
+            }
 
-            Console.ReadLine();
-            BezoekerTimer.Stop();
-            BezoekerTimer.Dispose();
-            InstructionTimer.Stop();
-            InstructionTimer.Dispose();
-            MoveLinesTimer.Stop();
-            MoveLinesTimer.Dispose();
+            if (_ticks % 20 == 0)
+            {
+                NewInstructieAfgelopen(); 
+            }
+
+
+            if (_ticks % 4 == 0)
+            {
+                LijnenVerplaatst();
+            }
         }
 
-        private void NewVisitor()
+        private void LijnenVerplaatst()
         {
-            BezoekerTimer = new Timer(3000);
-            BezoekerTimer.Elapsed += NewSporter;
-            BezoekerTimer.AutoReset = true;
-            BezoekerTimer.Enabled = true;
-        }
-
-        private void NewInstruction()
-        {
-            InstructionTimer = new Timer(20000); //20000
-            InstructionTimer.Elapsed += NewInstructieAfgelopen;
-            InstructionTimer.AutoReset = true;
-            InstructionTimer.Enabled = true;
-        }
-
-        private void MoveLines()
-        {
-            MoveLinesTimer = new Timer(4000);
-            MoveLinesTimer.Elapsed += LijnenVerplaatst;
-            MoveLinesTimer.AutoReset = true;
-            MoveLinesTimer.Enabled = true;
-        }
-
-        private void LijnenVerplaatst(object source, ElapsedEventArgs e)
-        {
-            Waterskibaan.VerplaatsKabel();
-            Waterskibaan.SporterStart(WachtrijStarten.SporterVerlaatRij());
-            Console.WriteLine(Waterskibaan.ToString());
+            if(WachtrijStarten.queue.Count > 0)
+            {
+                Waterskibaan.VerplaatsKabel();
+                Waterskibaan.SporterStart(WachtrijStarten.SporterVerlaatRij());
+                Console.WriteLine(Waterskibaan.ToString());
+            }
         }
 
         public void info()
@@ -96,12 +78,12 @@ namespace waterskibaan
             Console.WriteLine(WachtrijStarten.ToString());
         }
 
-        private void NewInstructieAfgelopen(Object source, ElapsedEventArgs e)
+        private void NewInstructieAfgelopen()
         {
             InstructieAfgelopen?.Invoke(new InstructieAfgelopenArgs(WachtrijInstructie.SportersVerlatenRij(5)));
         }
 
-        private void NewSporter(Object source, ElapsedEventArgs e)
+        private void NewSporter()
         {
             //opdracht 11
             /* 
@@ -110,8 +92,9 @@ namespace waterskibaan
             waterskibaan.SporterStart(henk);
             Console.WriteLine(waterskibaan.ToString());
             */
-            info();
-            NieuweBezoeker?.Invoke(new NieuweBezoekerArgs(new Sporter(MoveCollection.GetWillekeurigeMoves(5))));
+            Sporter sporter = new Sporter(MoveCollection.GetWillekeurigeMoves(5));
+            NieuweBezoeker?.Invoke(new NieuweBezoekerArgs(sporter));
+
         }
 
         public class NieuweBezoekerArgs : EventArgs

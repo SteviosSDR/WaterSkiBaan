@@ -19,7 +19,10 @@ namespace waterskibaan
 
         protected Wachtrij(int lengte) => MAX_LENGTE_RIJ = lengte;
 
-        protected Queue<Sporter> queue = new Queue<Sporter>();
+        public Queue<Sporter> queue
+        {
+            get;
+        } = new Queue<Sporter>();
 
         public void SporterneemPlaatsInRij(Sporter sporter)
         {
@@ -38,7 +41,11 @@ namespace waterskibaan
 
         public Sporter SporterVerlaatRij()
         {
-            return queue.Dequeue();
+            if(queue.Count > 0)
+            {
+                return queue.Dequeue();
+            }
+            return null;
         }
     }
 

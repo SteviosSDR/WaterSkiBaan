@@ -9,6 +9,7 @@ namespace waterskibaan
     public interface IMoves
     {
         int Move();
+        string Naam { get; }
     }
 
     class Backflip : IMoves
@@ -17,6 +18,8 @@ namespace waterskibaan
         {
             return 20;
         }
+
+        string IMoves.Naam => "Backflip";
     }
 
     class Frontflip : IMoves
@@ -25,6 +28,8 @@ namespace waterskibaan
         {
             return 30;
         }
+
+        string IMoves.Naam => "Frontflip";
     }
 
     class Tripplesalto : IMoves
@@ -33,6 +38,8 @@ namespace waterskibaan
         {
             return 60;
         }
+
+        string IMoves.Naam => "Tripplesalto";
     }
 
     class Jump : IMoves
@@ -41,6 +48,8 @@ namespace waterskibaan
         {
             return 5;
         }
+
+        string IMoves.Naam => "Jump";
     }
 
 
