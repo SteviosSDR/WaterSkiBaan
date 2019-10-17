@@ -55,7 +55,7 @@ namespace waterskibaan
             }
 
 
-            if (_ticks % 4 == 0)
+            if (_ticks %  1 == 0)
             {
                 LijnenVerplaatst();
             }
@@ -63,9 +63,9 @@ namespace waterskibaan
 
         private void LijnenVerplaatst()
         {
-            if(WachtrijStarten.queue.Count > 0)
+            Waterskibaan.VerplaatsKabel();
+            if (WachtrijStarten.queue.Count > 0)
             {
-                Waterskibaan.VerplaatsKabel();
                 Waterskibaan.SporterStart(WachtrijStarten.SporterVerlaatRij());
                 Console.WriteLine(Waterskibaan.ToString());
             }
