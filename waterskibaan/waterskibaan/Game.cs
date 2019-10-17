@@ -36,7 +36,7 @@ namespace waterskibaan
             Waterskibaan = new Waterskibaan();
             WachtrijInstructie = new WachtrijInstructie(this);
             InstructieGroep = new InstructieGroep(this);
-            WachtrijStarten = new WachtrijStarten(this, Waterskibaan);
+            WachtrijStarten = new WachtrijStarten(this);
 
             Waterskibaan.waterskibaan();
 
@@ -77,18 +77,23 @@ namespace waterskibaan
         private void MoveLines()
         {
             MoveLinesTimer = new Timer(4000);
-            MoveLinesTimer.Elapsed += LijnenVerplaatstPV;
+            MoveLinesTimer.Elapsed += LijnenVerplaatst;
             MoveLinesTimer.AutoReset = true;
             MoveLinesTimer.Enabled = true;
         }
-        private void LijnenVerplaatstPV(object source, ElapsedEventArgs e)
+
+        private void LijnenVerplaatst(object source, ElapsedEventArgs e)
         {
             Waterskibaan.VerplaatsKabel();
-            Sporter sporter = WachtrijStarten.SporterVerlaatRij();
-            sporter.Skies = new Skies();
-            sporter.Zwemvest = new Zwemvest();
-            Waterskibaan.SporterStart(sporter);
+            Waterskibaan.SporterStart(WachtrijStarten.SporterVerlaatRij());
             Console.WriteLine(Waterskibaan.ToString());
+        }
+
+        public void info()
+        {
+            Console.WriteLine(WachtrijInstructie.ToString());
+            Console.WriteLine(InstructieGroep.ToString());
+            Console.WriteLine(WachtrijStarten.ToString());
         }
 
         private void NewInstructieAfgelopen(Object source, ElapsedEventArgs e)
@@ -105,7 +110,7 @@ namespace waterskibaan
             waterskibaan.SporterStart(henk);
             Console.WriteLine(waterskibaan.ToString());
             */
-
+            info();
             NieuweBezoeker?.Invoke(new NieuweBezoekerArgs(new Sporter(MoveCollection.GetWillekeurigeMoves(5))));
         }
 

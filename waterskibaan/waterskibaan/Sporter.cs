@@ -32,6 +32,13 @@ namespace waterskibaan
             }
         }
 
+        public IMoves HuidigeMove
+        {
+            get;
+
+            set;
+        }
+
         public int aantalPunten
         {
             get;

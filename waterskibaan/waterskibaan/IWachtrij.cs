@@ -8,7 +8,7 @@ using static waterskibaan.Game;
 
 namespace waterskibaan
 {
-    public abstract class Wachtrij
+    public abstract class Wachtrij 
     {
         public int MAX_LENGTE_RIJ
         {
@@ -49,6 +49,7 @@ namespace waterskibaan
         public WachtrijInstructie(Game game) : base(100)
         {
             game.NieuweBezoeker += PlaatsBezoekerInRij;
+            
         }
 
         public void PlaatsBezoekerInRij(NieuweBezoekerArgs args)
@@ -86,10 +87,21 @@ namespace waterskibaan
     {
         public WachtrijStarten() : base(20) { }
 
-        public WachtrijStarten(Game game, Waterskibaan waterskibaan) : base(20)
+        public WachtrijStarten(Game game) : base(20)
         {
-
+            //Console.WriteLine("Sporters toegevoegd aan wachtrijstarten");
+            game.InstructieAfgelopen += WachtrijStartenPV;
         }
+        public void WachtrijStartenPV(InstructieAfgelopenArgs args)
+        {
+            Console.WriteLine("Wachtrij Gestart");
+            Console.WriteLine($"{args.sporterLijst.Count} sporters toegevoegd aan de startrij");
+            foreach (Sporter sporter in args.sporterLijst)
+            {
+                SporterneemPlaatsInRij(sporter);
+            }
+        }
+
         public override string ToString() => $"WachtrijStarten lengte: {queue.Count},max: {MAX_LENGTE_RIJ}";
     }
 }

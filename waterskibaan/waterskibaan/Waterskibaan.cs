@@ -23,6 +23,8 @@ namespace waterskibaan
             {
                 Lijn lijn = lijnvoorraad.verwijderEersteLijn();
                 lijn.huidigeSporter = sp;
+                sp.Skies = new Skies();
+                sp.Zwemvest = new Zwemvest();
                 sp.AantalRondenNogTeGaan = aantalRondes.Next(1, 2);
                 kabel.NeemLijnInGeruik(lijn);
             }
@@ -40,6 +42,9 @@ namespace waterskibaan
 
         public void VerplaatsKabel()
         {
+            Random randomMoveChance = new Random();
+
+
             kabel.VerschuifLijnen();
             lijnvoorraad.LijnToevoegenAanRij(kabel.VerwijderLijnVanKabel());
         }

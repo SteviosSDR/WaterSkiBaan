@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "waterskibaan", "waterskibaa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaterskibaanTest", "WaterskibaanTest\WaterskibaanTest.csproj", "{E3B2B50D-F2A9-45D6-8B6F-FF9BDD291640}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaterSkibaanVisualisatie", "WaterSkibaanVisualisatie\WaterSkibaanVisualisatie.csproj", "{6D40527F-851A-4A04-A073-ED2F75FCED92}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{E3B2B50D-F2A9-45D6-8B6F-FF9BDD291640}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E3B2B50D-F2A9-45D6-8B6F-FF9BDD291640}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E3B2B50D-F2A9-45D6-8B6F-FF9BDD291640}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D40527F-851A-4A04-A073-ED2F75FCED92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D40527F-851A-4A04-A073-ED2F75FCED92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D40527F-851A-4A04-A073-ED2F75FCED92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D40527F-851A-4A04-A073-ED2F75FCED92}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
